@@ -23,11 +23,66 @@ char* get_selffeed(char* access_token){
 	return get_conntent_response(send_request(request));
 }
 
+char* get_user_recent(long user_id,char* access_token){
+	char cmd[1024];
+	char* request;
+	sprintf(cmd,"/v1/users/%s/media/recent/?",user_id);
+	request = form_get_request(cmd,access_token);
+	return get_conntent_response(send_request(request));
+}
+
+char* get_self_liked(char* access_token){
+	char cmd[1024];
+	char* request;
+	sprintf(cmd,"/v1/users/self/media/liked?");
+	request = form_get_request(cmd,access_token);
+	return get_conntent_response(send_request(request));
+}
+char* search_by_name(char* search_token,char* access_token){
+	char cmd[1024];
+	char* request;
+	sprintf(cmd,"/v1/users/search?q=%s",search_token);
+	request = form_get_request(cmd,access_token);
+	return get_conntent_response(send_request(request));
+}
+
+char* get_flows(char* user_id,char* access_token){
+	char cmd[1024];
+	char* request;
+	sprintf(cmd,"/v1/users/%s/follows?",user_id);
+	request = form_get_request(cmd,access_token);
+	return get_conntent_response(send_request(request));
+}
+
+char* get_flowed_by(char* user_id,char* access_token){
+	char cmd[1024];
+	char* request;
+	sprintf(cmd,"/v1/users/%s/followed-by?",user_id);
+	request = form_get_request(cmd,access_token);
+	return get_conntent_response(send_request(request));
+}
+char* get_requested_by(char* access_token){
+	char cmd[1024];
+	char* request;
+	sprintf(cmd,"/v1/users/self/requested-by?");
+	request = form_get_request(cmd,access_token);
+	return get_conntent_response(send_request(request));
+}
+char* get_relationship(long user_id,char* access_token){
+	char cmd[1024];
+	char* request;
+	sprintf(cmd,"/v1/users/%s/relationship?",user_id);
+	request = form_get_request(cmd,access_token);
+	return get_conntent_response(send_request(request));
+}
+
 char* form_get_request(char* cmd,char* access_token){
 	char request[MAX_REQUEST];
 	sprintf(request,"GET %saccess_token=%s HTTP/1.1\r\nX-HostCommonName:%s\r\nHost:%s\nConnection:Keep-Alive\r\n\r\n",cmd,access_token,XHOST_COMMONE_NAME,HOST,X_TARGET_URL);
 	return request;
 }
+	
+
 
 char* send_request(char* request){
 	char* response[1024*8];

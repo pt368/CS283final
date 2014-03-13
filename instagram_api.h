@@ -19,27 +19,20 @@
 char* get_user_info(long user_id,char* access_token);
 char* get_selffeed(char* access_token);
 
-// char* get_user_recent(long user_id);
-// char* get_user_recent(long user_id,char* access_token);
+char* get_user_recent(long user_id,char* access_token);
 
-// char* get_user_slef_liked();
-// char* get_user_slef_liked(char* access_token);
+char* get_self_liked(char* access_token);
 
-// char* search_by_name(char* search_token);
-// char* search_by_name(char* search_token,char* access_token);
+char* search_by_name(char* search_token,char* access_token);
 
 // relationship
-// char* get_flows(long user_id);
-// char* get_flows(char* user_id,char* access_token);
+char* get_flows(char* user_id,char* access_token);
 
-// char* get_flowed_by(long user_id);
-// char* get_flowed_by(char* user_id,char* access_token);
+char* get_flowed_by(char* user_id,char* access_token);
 
-// char* get_requested_by();
-// char* get_requested_by(char* access_token)
+char* get_requested_by(char* access_token)
 
-// char* get_relationship(long user_id);
-// char* get_relationship(long user_id,char* access_token);
+char* get_relationship(long user_id,char* access_token);
 
 // bool modify_relationship(long user_id);
 // bool modify_relationship(long user_id, char* access_token);
