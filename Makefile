@@ -1,0 +1,1 @@
+CC=gccTARGET = testapitest:	$CC -Wall -lssl -lcrypto -o testapi testapi.c
