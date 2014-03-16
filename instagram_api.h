@@ -30,12 +30,11 @@ char* get_flows(char* user_id,char* access_token);
 
 char* get_flowed_by(char* user_id,char* access_token);
 
-char* get_requested_by(char* access_token)
+char* get_requested_by(char* access_token);
 
 char* get_relationship(long user_id,char* access_token);
 
-// bool modify_relationship(long user_id);
-// bool modify_relationship(long user_id, char* access_token);
+// int modify_relationship(long user_id, char* access_token,char* action);
 
 // media
 // char* get_media(long media_id);
@@ -72,7 +71,7 @@ char* get_relationship(long user_id,char* access_token);
 //util
 
 char* form_get_request(char* cmd,char* access_token);
-// char* form_post_request(char* cmd,char* access_token);
+char* form_post_request(char* cmd,char* access_token,char* content,int len_content);
 // char* form_del_request(char* cmd,char* access_token);
 char* send_request(char* request);
 char* get_conntent_response(char* response);

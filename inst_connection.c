@@ -68,7 +68,7 @@ connection *sslConnect (void){
 		SSL_library_init ();
 
 		// New context saying we are a client, and using SSL 2 or 3
-		c->sslContext = SSL_CTX_new (SSLv23_client_method ());
+		c->sslContext = SSL_CTX_new (SSLv3_client_method ());
 		if (c->sslContext == NULL)
 		ERR_print_errors_fp (stderr);
 
@@ -110,7 +110,6 @@ char *sslRead (connection *c)
                           readSize * sizeof (char) + 1);
 
           received = SSL_read (c->sslHandle, buffer, sizeof(buffer));
-		  // printf("%s",received)
           if (received > 0)
             strcat (rc, buffer);
 
