@@ -18,6 +18,19 @@ char* get_user_info(long user_id,char* access_token){
 	return get_conntent_response(send_request(request));
 }
 
+char* get_user_profile_pic(long user_id,char* access_token){
+	char * user_info;
+	char* ret;
+	char * link_object;
+	user_info = get_user_info(user_id,access_token);
+	ret = strstr(user_info,"\"profile_picture\":\"");
+	link_object = strtok(strdup(ret), ",");	
+	link_object = strtok(strdup(link_object), ":");	
+	link_object = strtok(NULL, " ");	
+	link_object = strtok(link_object, "\"");	
+	return link_object;
+}
+
 char* get_selffeed(char* access_token){
 	char cmd[1024];
 	char* request;
@@ -79,6 +92,22 @@ char* get_relationship(long user_id,char* access_token){
 	return get_conntent_response(send_request(request));
 }
 
+char* get_media(long media_id,char* access_token){
+	char cmd[1024];
+	char* request;
+	sprintf(cmd,"v1/media/%d?",media_id);
+	request = form_get_request(cmd,access_token);
+	return get_conntent_response(send_request(request));
+}
+
+char* get_popular_media(char* access_token){
+	char cmd[1024];
+	char* request;
+	sprintf(cmd,"v1/media/popular?");
+	request = form_get_request(cmd,access_token);
+	return get_conntent_response(send_request(request));
+}
+
 // int modify_relationship(long user_id, char* access_token,char* action){
 	// char *cmd;
 	// char content[1024];
@@ -118,6 +147,12 @@ char* send_request(char* request){
 	return response;
 }
 
+int* download(char* link){
+	char cmd[1000];
+	sprintf(cmd,"wget %s", link);
+	system(cmd);
+	return 1;
+}
 
 
 char* get_conntent_response(char* response){

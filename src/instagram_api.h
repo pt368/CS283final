@@ -18,7 +18,7 @@
 //user
 char* get_user_info(long user_id,char* access_token);
 char* get_selffeed(char* access_token);
-
+char* get_user_profile_pic(long user_id,char* access_token);
 char* get_user_recent(long user_id,char* access_token);
 
 char* get_self_liked(char* access_token);
@@ -37,35 +37,8 @@ char* get_relationship(long user_id,char* access_token);
 // int modify_relationship(long user_id, char* access_token,char* action);
 
 // media
-// char* get_media(long media_id);
-// char* get_media(long media_id,char* access_token);
-
-// char* search_media(char* search_token);
-// char* search_media(char* search_token,char*access_token);
-
-// char* get_popular_media();
-// char* get_popular_media(char*access_token);
-
-// comment 
-// char* get_comments(long comment_id);
-// char* get_comments(long comment_id,char* access_token);
-
-// bool post_comments(long comment_id);
-// bool post_comments(long comment_id,char* access_token);
-
-// bool del_comments(long comment_id);
-// bool del_comments(long comment_id,char* access_token);
-
-// likes
-
-// char* get_liked(long media_id);
-// char* get_liked(long media_id,char* access_token);
-
-// bool like_media(long media_id);
-// bool like_media(long media_id,char* access_token);
-
-// bool unline_media(long media_id);
-// bool unline_media(long media_id, char* access_token);
+char* get_media(long media_id,char* access_token);
+char* get_popular_media(char*access_token);
 
 
 //util
